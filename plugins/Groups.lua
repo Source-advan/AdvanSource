@@ -2,9 +2,9 @@ local function chat_list(msg)
     local data = load_data(_config.moderation.data)
         local groups = 'groups'
         if not data[tostring(groups)] then
-                return 'No groups at the moment'
+                return '<b>No groups at the moment</b>'
         end
-        local message = 'List of your bot Groups:\n\n '
+        local message = '<b>List of your bot Groups:</b>\n\n> '
         for k,v in pairs(data[tostring(groups)]) do
                 local settings = data[tostring(v)]['settings']
                 for m,n in pairsByKeys(settings) do
@@ -27,24 +27,24 @@ local function run(msg, matches)
   if is_sudo(msg) or is_vip(msg) then
     if matches[1] == 'link' and data[tostring(matches[2])] then
         if is_banned(msg.from.id, matches[2]) then
-	    return 'You are in ban'
+	    return '<b>You are in ban</b>'
 	 end
       if is_gbanned(msg.from.id) then
-            return 'You are in Globalban or Superban'
+            return '<b>You are in Globalban or Superban</b>'
       end
       if data[tostring(matches[2])]['settings']['lock_member'] == 'yes' and not is_owner2(msg.from.id, matches[2]) then
-        return 'Group is private.'
+        return '<b>Group is private.</b>'
       end
           local chat_id = "chat#id"..matches[2]
           local user_id = "user#id"..msg.from.id
    	  chat_add_user(chat_id, user_id, ok_cb, false)   
 	  local group_link = data[tostring(matches[2])]['settings']['set_link']
       local group_name = data[tostring(matches[2])]['settings']['set_name']
-	  return "Group Link is:\n"..group_link.."\n\n (Group name:"..group_name..")\n"
+	  return "<b>Group Link is:</b>\n>"..group_link.."\n\n (<b>Group name:</b>"..group_name..")\n>"
 	  
     elseif matches[1] == 'link' and not data[tostring(matches[2])] then
 
-         	return "Group not found"
+         	return "<b>Group not found</b>"
          end
     end
   end
@@ -58,24 +58,28 @@ local function run(msg, matches)
  end
  
  if matches[1] == 'help' and msg.to.type == 'user' then
-		text = "Welcome to my bot!\n\nTo get a list of bot groups use /chats or /groups for list of chats.\n\n"
+		text = "<b>Welcome to my bot!</b>\n\n<b>To get a list of bot groups use /chats or /groups for list of chats.</b>\n\n>"
      	return text
 end
 
  end
 return {
-    description = "See link of a group and groups list",
+    description = "<b>See link of a group and groups list</b>",
     usage = "!link ID && !groups",
     advan = {
-    	"Created by: @janlou",
-    	"Powered by: @AdvanTM",
+	    "Created by: @janlou",
+		  "edit by: @Wow_heh",
     	"CopyRight all right reserved",
     },
 patterns = {
 	"^[!#/]([Ll]ink) (.*)$",
+  "^(link) (.*)$",
 	"^[!#/]([Gg]roups)$",
+	"^(groups)$",
 	"^[!#/]([Cc]hats)$",
+	"^(chats)$",
 	"^[!#/]([Hh]elp)$",
+	"^(help)$",
 	},
 run = run
 }
