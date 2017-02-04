@@ -1933,7 +1933,7 @@ return {
 	"^[#!/]([Pp]ublic) (.*)$",
 	"^(public) (.*)$",
 	"^[#!/]([Ss]ettings)$",
-	"^*settings)$",
+	"^(settings)$",
 	"^[#!/]([Ss]ettingsall)$",
 	"^(settingsall)$",
 	"^[#!/]([Rr]ules)$",
