@@ -29,11 +29,11 @@ local function lock_group_media(msg, data, target)
   end
   local group_media_lock = data[tostring(target)]['settings']['lock_media']
   if group_media_lock == 'yes' then
-    return 'Media posting is already locked'
+    return '<b>Media posting is already locked</b>'
   else
     data[tostring(target)]['settings']['lock_media'] = 'yes'
     save_data(_config.moderation.data, data)
-    return 'Media posting has been locked'
+    return '<b>Media posting has been locked</b>'
   end
 end
 
@@ -43,11 +43,11 @@ local function unlock_group_media(msg, data, target)
   end
   local group_media_lock = data[tostring(target)]['settings']['lock_media']
   if group_media_lock == 'no' then
-    return 'Media posting is not locked'
+    return '<b>Media posting is not locked</b>'
   else
     data[tostring(target)]['settings']['lock_media'] = 'no'
     save_data(_config.moderation.data, data)
-    return 'Media posting has been unlocked'
+    return '<b>Media posting has been unlocked</b>'
   end
 end
     
@@ -57,13 +57,13 @@ end
   end
   local group_fwd_lock = data[tostring(target)]['settings']['lock_fwd']
   if group_fwd_lock == 'yes' then
-    return 'Forward is already locked'
+    return '<b>Forward is already locked</b>'
   else
     data[tostring(target)]['settings']['lock_fwd'] = 'yes'
     save_data(_config.moderation.data, data)
     local hash = 'fwd:'..msg.to.id
     redis:set(hash, true)
-    return 'Forward has been locked'
+    return '<b>Forward has been locked</b>'
   end
 end
 
@@ -73,13 +73,13 @@ local function unlock_group_fwd(msg, data, target)
   end
   local group_fwd_lock = data[tostring(target)]['settings']['lock_fwd']
   if group_fwd_lock == 'no' then
-    return 'Forward is not locked'
+    return '<b>Forward is not locked</b>'
   else
     data[tostring(target)]['settings']['lock_fwd'] = 'no'
     save_data(_config.moderation.data, data)
     local hash = 'fwd:'..msg.to.id
     redis:del(hash)
-    return 'Forward has been unlocked'
+    return '<b>Forward has been unlocked</b>'
   end
 end
 
@@ -89,13 +89,13 @@ local function lock_group_reply(msg, data, target)
   end
   local group_reply_lock = data[tostring(target)]['settings']['lock_reply']
   if group_reply_lock == 'yes' then
-    return 'reply posting is already locked'
+    return '<b>reply posting is already locked</b>'
   else
     data[tostring(target)]['settings']['lock_reply'] = 'yes'
     save_data(_config.moderation.data, data)
     local hash2 = 'reply:'..msg.to.id
     redis:set(hash2, true)
-    return 'reply posting has been locked'
+    return '<b>reply posting has been locked</b>'
   end
 end
 
@@ -105,13 +105,13 @@ local function unlock_group_reply(msg, data, target)
   end
   local group_reply_lock = data[tostring(target)]['settings']['lock_reply']
   if group_reply_lock == 'no' then
-    return 'reply posting is not locked'
+    return '<b>reply posting is not locked</b>'
   else
     data[tostring(target)]['settings']['lock_reply'] = 'no'
     save_data(_config.moderation.data, data)
     local hash2 = 'reply:'..msg.to.id
     redis:del(hash2)
-    return 'reply posting has been unlocked'
+    return '<b>reply posting has been unlocked</b>'
   end
 end
 
@@ -121,11 +121,11 @@ local function lock_group_share(msg, data, target)
   end
   local group_share_lock = data[tostring(target)]['settings']['lock_share']
   if group_share_lock == 'yes' then
-    return 'share posting is already locked'
+    return '<b>share posting is already locked</b>'
   else
     data[tostring(target)]['settings']['lock_share'] = 'yes'
     save_data(_config.moderation.data, data)
-    return 'share posting has been locked'
+    return '</b>share posting has been locked</b>'
   end
 end
 
@@ -135,11 +135,11 @@ local function unlock_group_share(msg, data, target)
   end
   local group_share_lock = data[tostring(target)]['settings']['lock_share']
   if group_share_lock == 'no' then
-    return 'share posting is not locked'
+    return '<b>share posting is not locked</b>'
   else
     data[tostring(target)]['settings']['lock_share'] = 'no'
     save_data(_config.moderation.data, data)
-    return 'share posting has been unlocked'
+    return '<b>share posting has been unlocked</b>'
   end
 end
 
@@ -149,11 +149,11 @@ local function lock_group_tag(msg, data, target)
   end
   local group_tag_lock = data[tostring(target)]['settings']['lock_tag']
   if group_tag_lock == 'yes' then
-    return 'tag posting is already locked'
+    return '<b>tag posting is already locked</b>'
   else
     data[tostring(target)]['settings']['lock_tag'] = 'yes'
     save_data(_config.moderation.data, data)
-    return 'tag posting has been locked'
+    return '<b>tag posting has been locked</b>'
   end
 end
 
@@ -163,11 +163,11 @@ local function unlock_group_tag(msg, data, target)
   end
   local group_tag_lock = data[tostring(target)]['settings']['lock_tag']
   if group_tag_lock == 'no' then
-    return 'tag posting is not locked'
+    return '<b>tag posting is not locked</b>'
   else
     data[tostring(target)]['settings']['lock_tag'] = 'no'
     save_data(_config.moderation.data, data)
-    return 'tag posting has been unlocked'
+    return '<b>tag posting has been unlocked</b>'
   end
 end
 
@@ -177,11 +177,11 @@ local function lock_group_bots(msg, data, target)
   end
   local group_bots_lock = data[tostring(target)]['settings']['lock_bots']
   if group_bots_lock == 'yes' then
-    return 'bots is already locked'
+    return '<b>bots is already locked</b>'
   else
     data[tostring(target)]['settings']['lock_bots'] = 'yes'
     save_data(_config.moderation.data, data)
-    return 'bots has been locked'
+    return '<b>bots has been locked</b>'
   end
 end
 
@@ -191,11 +191,11 @@ local function unlock_group_bots(msg, data, target)
   end
   local group_bots_lock = data[tostring(target)]['settings']['lock_bots']
   if group_bots_lock == 'no' then
-    return 'bots is not locked'
+    return '<b>bots is not locked</b>'
   else
     data[tostring(target)]['settings']['lock_bots'] = 'no'
     save_data(_config.moderation.data, data)
-    return 'bots has been unlocked'
+    return '<b>bots has been unlocked</b>'
   end
 end
 
@@ -205,11 +205,11 @@ local function lock_group_number(msg, data, target)
   end
   local group_number_lock = data[tostring(target)]['settings']['lock_number']
   if group_number_lock == 'yes' then
-    return 'number posting is already locked'
+    return '<b>number posting is already locked</b>'
   else
     data[tostring(target)]['settings']['lock_number'] = 'yes'
     save_data(_config.moderation.data, data)
-    return 'number posting has been locked'
+    return '<b>number posting has been locked</b>'
   end
 end
 
@@ -219,11 +219,11 @@ local function unlock_group_number(msg, data, target)
   end
   local group_number_lock = data[tostring(target)]['settings']['lock_number']
   if group_number_lock == 'no' then
-    return 'number posting is not locked'
+    return '<b>number posting is not locked</b>'
   else
     data[tostring(target)]['settings']['lock_number'] = 'no'
     save_data(_config.moderation.data, data)
-    return 'number posting has been unlocked'
+    return '<b>number posting has been unlocked</b>'
   end
 end
 
@@ -233,11 +233,11 @@ local function lock_group_poker(msg, data, target)
   end
   local group_poker_lock = data[tostring(target)]['settings']['lock_poker']
   if group_poker_lock == 'yes' then
-    return 'poker posting is already locked'
+    return '<b>poker posting is already locked</b>'
   else
     data[tostring(target)]['settings']['lock_poker'] = 'yes'
     save_data(_config.moderation.data, data)
-    return 'poker posting has been locked'
+    return '<b>poker posting has been locked</b>'
   end
 end
 
@@ -247,11 +247,11 @@ local function unlock_group_poker(msg, data, target)
   end
   local group_poker_lock = data[tostring(target)]['settings']['lock_poker']
   if group_poker_lock == 'no' then
-    return 'poker posting is not locked'
+    return '<b>poker posting is not locked</b>'
   else
     data[tostring(target)]['settings']['lock_poker'] = 'no'
     save_data(_config.moderation.data, data)
-    return 'poker posting has been unlocked'
+    return '<b>poker posting has been unlocked</b>'
   end
 end
 
@@ -263,13 +263,13 @@ end
   end
   local group_audio_lock = data[tostring(target)]['settings']['lock_audio']
   if group_audio_lock == 'yes' and is_muted(chat_id, msg_type..': yes') then
-    return 'audio posting is already locked'
+    return '<b>audio posting is already locked</b>'
   else
     if not is_muted(chat_id, msg_type..': yes') then
 		mute(chat_id, msg_type)
     data[tostring(target)]['settings']['lock_audio'] = 'yes'
     save_data(_config.moderation.data, data)
-    return 'audio posting has been locked'
+    return '<b>audio posting has been locked</b>'
     end
   end
 end
@@ -282,13 +282,13 @@ local function unlock_group_audio(msg, data, target)
   end
   local group_audio_lock = data[tostring(target)]['settings']['lock_audio']
   if group_audio_lock == 'no' and not is_muted(chat_id, msg_type..': yes') then
-    return 'audio posting is not locked'
+    return '<b>audio posting is not locked</b>'
   else
   	if is_muted(chat_id, msg_type..': yes') then
 		unmute(chat_id, msg_type)
     data[tostring(target)]['settings']['lock_audio'] = 'no'
     save_data(_config.moderation.data, data)
-    return 'audio posting has been unlocked'
+    return '<b>audio posting has been unlocked</b>'
     end
   end
 end
@@ -301,13 +301,13 @@ end
   end
   local group_photo_lock = data[tostring(target)]['settings']['lock_photo']
   if group_photo_lock == 'yes' and is_muted(chat_id, msg_type..': yes') then
-    return 'photo posting is already locked'
+    return '<b>photo posting is already locked</b>'
   else
     if not is_muted(chat_id, msg_type..': yes') then
 		mute(chat_id, msg_type)
     data[tostring(target)]['settings']['lock_photo'] = 'yes'
     save_data(_config.moderation.data, data)
-    return 'photo posting has been locked'
+    return '<b>photo posting has been locked</b>'
     end
   end
 end
@@ -320,13 +320,13 @@ local function unlock_group_photo(msg, data, target)
   end
   local group_photo_lock = data[tostring(target)]['settings']['lock_photo']
   if group_photo_lock == 'no' and not is_muted(chat_id, msg_type..': yes') then
-    return 'photo posting is not locked'
+    return '<b>photo posting is not locked</b>'
   else
   	if is_muted(chat_id, msg_type..': yes') then
 		unmute(chat_id, msg_type)
     data[tostring(target)]['settings']['lock_photo'] = 'no'
     save_data(_config.moderation.data, data)
-    return 'photo posting has been unlocked'
+    return '<b>photo posting has been unlocked</b>'
     end
   end
 end
@@ -339,13 +339,13 @@ end
   end
   local group_video_lock = data[tostring(target)]['settings']['lock_video']
   if group_video_lock == 'yes' and is_muted(chat_id, msg_type..': yes') then
-    return 'video posting is already locked'
+    return '<b>video posting is already locked</b>'
   else
     if not is_muted(chat_id, msg_type..': yes') then
 		mute(chat_id, msg_type)
     data[tostring(target)]['settings']['lock_video'] = 'yes'
     save_data(_config.moderation.data, data)
-    return 'video posting has been locked'
+    return '<b>video posting has been locked</b>'
     end
   end
 end
@@ -358,13 +358,13 @@ local function unlock_group_video(msg, data, target)
   end
   local group_video_lock = data[tostring(target)]['settings']['lock_video']
   if group_video_lock == 'no' and not is_muted(chat_id, msg_type..': yes') then
-    return 'video posting is not locked'
+    return '<b>video posting is not locked</b>'
   else
   	if is_muted(chat_id, msg_type..': yes') then
 		unmute(chat_id, msg_type)
     data[tostring(target)]['settings']['lock_video'] = 'no'
     save_data(_config.moderation.data, data)
-    return 'video posting has been unlocked'
+    return '<b>video posting has been unlocked</b>'
     end
   end
 end
@@ -377,13 +377,13 @@ end
   end
   local group_documents_lock = data[tostring(target)]['settings']['lock_documents']
   if group_documents_lock == 'yes' and is_muted(chat_id, msg_type..': yes') then
-    return 'documents posting is already locked'
+    return '<b>documents posting is already locked</b>'
   else
     if not is_muted(chat_id, msg_type..': yes') then
 		mute(chat_id, msg_type)
     data[tostring(target)]['settings']['lock_documents'] = 'yes'
     save_data(_config.moderation.data, data)
-    return 'documents posting has been locked'
+    return '<b>documents posting has been locked</b>'
     end
   end
 end
@@ -396,13 +396,13 @@ local function unlock_group_documents(msg, data, target)
   end
   local group_documents_lock = data[tostring(target)]['settings']['lock_documents']
   if group_documents_lock == 'no' and not is_muted(chat_id, msg_type..': yes') then
-    return 'documents posting is not locked'
+    return '<b>documents posting is not locked</b>'
   else
   	if is_muted(chat_id, msg_type..': yes') then
 		unmute(chat_id, msg_type)
     data[tostring(target)]['settings']['lock_documents'] = 'no'
     save_data(_config.moderation.data, data)
-    return 'documents posting has been unlocked'
+    return '<b>documents posting has been unlocked</b>'
     end
   end
 end
@@ -415,13 +415,13 @@ end
   end
   local group_text_lock = data[tostring(target)]['settings']['lock_text']
   if group_text_lock == 'yes' and is_muted(chat_id, msg_type..': yes') then
-    return 'text posting is already locked'
+    return '<b>text posting is already locked</b>'
   else
     if not is_muted(chat_id, msg_type..': yes') then
 		mute(chat_id, msg_type)
     data[tostring(target)]['settings']['lock_text'] = 'yes'
     save_data(_config.moderation.data, data)
-    return 'text posting has been locked'
+    return '<b>text posting has been locked</b>'
     end
   end
 end
@@ -434,13 +434,13 @@ local function unlock_group_text(msg, data, target)
   end
   local group_text_lock = data[tostring(target)]['settings']['lock_text']
   if group_text_lock == 'no' and not is_muted(chat_id, msg_type..': yes') then
-    return 'text posting is not locked'
+    return '<b>text posting is not locked</b>'
   else
   	if is_muted(chat_id, msg_type..': yes') then
 		unmute(chat_id, msg_type)
     data[tostring(target)]['settings']['lock_text'] = 'no'
     save_data(_config.moderation.data, data)
-    return 'text posting has been unlocked'
+    return '<b>text posting has been unlocked</b>'
     end
   end
 end
@@ -453,13 +453,13 @@ end
   end
   local group_all_lock = data[tostring(target)]['settings']['lock_all']
   if group_all_lock == 'yes' and is_muted(chat_id, msg_type..': yes') then
-    return 'all posting is already locked'
+    return '<b>all posting is already locked</b>'
   else
     if not is_muted(chat_id, msg_type..': yes') then
 		mute(chat_id, msg_type)
     data[tostring(target)]['settings']['lock_all'] = 'yes'
     save_data(_config.moderation.data, data)
-    return 'all posting has been locked'
+    return '<b>all posting has been locked</b>'
     end
   end
 end
@@ -472,13 +472,13 @@ local function unlock_group_all(msg, data, target)
   end
   local group_all_lock = data[tostring(target)]['settings']['lock_all']
   if group_all_lock == 'no' and not is_muted(chat_id, msg_type..': yes') then
-    return 'all posting is not locked'
+    return '<b>all posting is not locked</b>'
   else
   	if is_muted(chat_id, msg_type..': yes') then
 		unmute(chat_id, msg_type)
     data[tostring(target)]['settings']['lock_all'] = 'no'
     save_data(_config.moderation.data, data)
-    return 'all posting has been unlocked'
+    return '<b>all posting has been unlocked</b>'
     end
   end
 end
@@ -491,13 +491,13 @@ end
   end
   local group_gifs_lock = data[tostring(target)]['settings']['lock_gifs']
   if group_gifs_lock == 'yes' and is_muted(chat_id, msg_type..': yes') then
-    return 'gifs posting is already locked'
+    return '<b>gifs posting is already locked</b>'
   else
     if not is_muted(chat_id, msg_type..': yes') then
 		mute(chat_id, msg_type)
     data[tostring(target)]['settings']['lock_gifs'] = 'yes'
     save_data(_config.moderation.data, data)
-    return 'gifs posting has been locked'
+    return '<b>gifs posting has been locked</b>'
     end
   end
 end
@@ -510,13 +510,13 @@ local function unlock_group_gifs(msg, data, target)
   end
   local group_gifs_lock = data[tostring(target)]['settings']['lock_gifs']
   if group_gifs_lock == 'no' and not is_muted(chat_id, msg_type..': yes') then
-    return 'gifs posting is not locked'
+    return '<b>gifs posting is not locked</b>'
   else
   	if is_muted(chat_id, msg_type..': yes') then
 		unmute(chat_id, msg_type)
     data[tostring(target)]['settings']['lock_gifs'] = 'no'
     save_data(_config.moderation.data, data)
-    return 'gifs posting has been unlocked'
+    return '<b>gifs posting has been unlocked</b>'
     end
   end
 end
@@ -527,11 +527,11 @@ local function lock_group_inline(msg, data, target)
   end
   local group_inline_lock = data[tostring(target)]['settings']['lock_inline']
   if group_inline_lock == 'yes' then
-    return 'inline posting is already locked'
+    return '<b>inline posting is already locked</b>'
   else
     data[tostring(target)]['settings']['lock_inline'] = 'yes'
     save_data(_config.moderation.data, data)
-    return 'inline posting has been locked'
+    return '<b>inline posting has been locked</b>'
   end
 end
 
@@ -541,11 +541,11 @@ local function unlock_group_inline(msg, data, target)
   end
   local group_inline_lock = data[tostring(target)]['settings']['lock_inline']
   if group_inline_lock == 'no' then
-    return 'inline posting is not locked'
+    return '<b>inline posting is not locked</b>'
   else
     data[tostring(target)]['settings']['lock_inline'] = 'no'
     save_data(_config.moderation.data, data)
-    return 'inline posting has been unlocked'
+    return '<b>inline posting has been unlocked</b>'
   end
 end
 
@@ -555,11 +555,11 @@ local function lock_group_cmd(msg, data, target)
   end
   local group_cmd_lock = data[tostring(target)]['settings']['lock_cmd']
   if group_cmd_lock == 'yes' then
-    return 'cmd posting is already locked'
+    return '<b>cmd posting is already locked</b>'
   else
     data[tostring(target)]['settings']['lock_cmd'] = 'yes'
     save_data(_config.moderation.data, data)
-    return 'cmd posting has been locked'
+    return '<b>cmd posting has been locked</b>'
   end
 end
 
@@ -569,11 +569,11 @@ local function unlock_group_cmd(msg, data, target)
   end
   local group_cmd_lock = data[tostring(target)]['settings']['lock_cmd']
   if group_cmd_lock == 'no' then
-    return 'cmd posting is not locked'
+    return '<b>cmd posting is not locked</b>'
   else
     data[tostring(target)]['settings']['lock_cmd'] = 'no'
     save_data(_config.moderation.data, data)
-    return 'cmd posting has been unlocked'
+    return '<b>cmd posting has been unlocked</b>'
   end
 end
 ----------------------------------------
@@ -588,7 +588,7 @@ local function list_variablesbad(msg)
 
   if hash then
     local names = redis:hkeys(hash)
-    local text = 'List of words :\n\n'
+    local text = '<b>List of words:</b>\n\n>'
     for i=1, #names do
       text = text..'> '..names[i]..'\n'
     end
@@ -723,13 +723,13 @@ deleted = deleted + 1
  kick_user(v.peer_id,msg.to.id)
  end
  end
- send_large_msg(receiver, deleted.." Deleted account removed from group!") 
+ send_large_msg(receiver, deleted.." <b>Deleted account removed from group!</b>") 
  end 
 
 local function addword(msg, name)
     local hash = 'chat:'..msg.to.id..':badword'
     redis:hset(hash, name, 'newword')
-    return "New word has been added to list \n>"..name
+    return "<b>New word has been added to list</b> \n>"..name
 end
 
 local function get_variables_hash(msg)
@@ -743,7 +743,7 @@ local function list_variablesbad(msg)
 
   if hash then
     local names = redis:hkeys(hash)
-    local text = 'List of words :\n\n'
+    local text = '<b>List of words:</b> \n\n>'
     for i=1, #names do
       text = text..'> '..names[i]..'\n'
     end
@@ -757,7 +757,7 @@ function clear_commandbad(msg, var_name)
   --Save on redis  
   local hash = get_variables_hash(msg)
   redis:del(hash, var_name)
-  return 'Cleaned!'
+  return '<b>Cleaned!</b>'
 end
 
 local function get_valuebad(msg, var_name)
@@ -775,7 +775,7 @@ function clear_commandsbad(msg, cmd_name)
   --Save on redis  
   local hash = get_variables_hash(msg)
   redis:hdel(hash, cmd_name)
-  return ''..cmd_name..'  cleaned!'
+  return ''..cmd_name..'  <b>cleaned!</b>'
 end
 
 local function history(extra, suc, result)
@@ -783,9 +783,9 @@ local function history(extra, suc, result)
     delete_msg(result[i].id, ok_cb, false)
   end
   if tonumber(extra.con) == #result then
-    send_msg(extra.chatid, '"'..#result..'" message has been removed!', ok_cb, false)
+    send_msg(extra.chatid, '"'..#result..'" <b>message has been removed!</b>', ok_cb, false)
   else
-    send_msg(extra.chatid, 'Removing has been finished.', ok_cb, false)
+    send_msg(extra.chatid, '<b>Removing has been finished.</b>', ok_cb, false)
   end
 end
 
@@ -803,13 +803,13 @@ function run(msg, matches, callback, extra)
         adress = matches[2]
         name = matches[3]
         load_document(msg.reply_id, savefile, {msg=msg,name=name,adress=adress})
-        return 'File '..name..' has been saved in: \n./'..adress
+        return 'File '..name..' <b>has been saved in:</b> \n./'..adress
       end
       
       if msg.reply_id and matches[1] == "save" and matches[2] then
         name = matches[2]
         load_document(msg.reply_id, saveplug, {msg=msg,name=name})
-        reply_msg(msg['id'], 'Plugin '..name..' has been saved.', ok_cb, false)
+        reply_msg(msg['id'], '<b>Plugin</b> '..name..' <b>has been saved.</b>', ok_cb, false)
       end
  end
          --tosticker && tophoto:
@@ -830,24 +830,24 @@ function run(msg, matches, callback, extra)
 			   if not is_owner(msg) and not is_sudo(msg) then
 				   redis:setex("wait:"..msg.from.id, 30, true)
 				   redis:set("sticker:photo", "waiting")
-    	     return 'Please send your sticker now\n\nPowered by '..team..'\nJoin us : '..channel
+    	     return '<b>Please send your sticker now</b>\n\n<b>Powered by</b> '..team..'\nJoin us : '..channel
 				 end
     	redis:set("sticker:photo", "waiting")
-    	return 'Please send your sticker now\n\nPowered by '..team..'\nJoin us : '..channel
+    	return '<b>Please send your sticker now</b>\n\n<b>Powered by</b> '..team..'\n<b>Join us :</b> '..channel
 			elseif redis:get("wait:"..msg.from.id) then
-			return "Please wait for 30 second."
+			return "<b>Please wait for 30 second.</b>"
 			end
     elseif matches[1] == "tosticker" then
 		  if not redis:get("wait:"..msg.from.id) then
 			   if not is_owner(msg) and not is_sudo(msg) then
 				   redis:setex("wait:"..msg.from.id, 30, true)
 				   redis:set("photo:sticker", "waiting")
-           return 'Please send your photo now\n\nPowered by '..team..'\nJoin us : '..channel
+           return '<b>Please send your photo now</b>\n\n<b>Powered by</b> '..team..'\n<b>Join us :</b> '..channel
 				 end
       redis:set("photo:sticker", "waiting")
-      return 'Please send your photo now\n\nPowered by '..team..'\nJoin us : '..channel
+      return '<b>Please send your photo now</b>\n\n<b>Powered by</b> '..team..'\n<b>Join us :</b> '..channel
 		  elseif redis:get("wait:"..msg.from.id) then
-			return "Please wait for 30 second."
+			return "<b>Please wait for 30 second.</b>"
 			end
     end
        --tosticker && tophoto.
@@ -867,7 +867,7 @@ function run(msg, matches, callback, extra)
           save_config()
           plugins = {}
           load_plugins()
-          return matches[2]..' now is a sudo'
+          return matches[2]..' <b>now is a sudo</b>'
         end
     end
 	   --Setsudo.
@@ -877,9 +877,9 @@ function run(msg, matches, callback, extra)
               local user = 'user#id'..sudo_id
               local chat = 'chat#id'..msg.to.id
               chat_add_user(chat, user, callback, false)
-              return "Sudo has been added to: "..msg.to.print_name
+              return "<b>Sudo has been added to:</b> "..msg.to.print_name
 	    else
-		 return "For admins only!"
+		 return "<b>For admins only!</b>"
 		end
 	end
 	   --Addsudo.
@@ -890,12 +890,12 @@ function run(msg, matches, callback, extra)
                 receiver = get_receiver(msg) 
                 channel_get_users(receiver, check_member_super_deleted,{receiver = receiver, msg = msg})
 		      else
-			      return "Just for owner or sudo!"
+			      return "<b>Just for owner or sudo!</b>"
           end
 		    end
 		    if matches[2] == "filterlist" then
 		      if not is_momod(msg) then
-            return 'only for moderators!'
+            return '<b>only for moderators!</b>'
           end
           asd = '1'
           return clear_commandbad(msg, asd)
@@ -905,7 +905,7 @@ function run(msg, matches, callback, extra)
 	   --Filter:
 	if matches[1] == 'filter' then
     if not is_momod(msg) then
-      return 'only for moderators!'
+      return '<b>only for moderators!</b>'
     end
     name = string.sub(matches[2], 1, 50)
     return addword(msg, name)
@@ -915,7 +915,7 @@ function run(msg, matches, callback, extra)
   end
   if matches[1] == 'unfilter' then
     if not is_momod(msg) then
-      return 'only for moderators!'
+      return '<b>only for moderators!</b>'
     end
     return clear_commandsbad(msg, matches[2])
     end
@@ -927,12 +927,12 @@ function run(msg, matches, callback, extra)
                 file:write(text)
                 file:flush()
                 file:close()
-             return "Plugin ["..matches[2]..".lua] has been added!"
+             return "<b>Plugin</b> ["..matches[2]..".lua] <b>has been added!</b>"
            end
 	   --Addplug.
 	   --Delplug:
 	        if matches[1] == "delplug" and is_sudo(msg) then
-                reply_msg(msg['id'], "پلاگین ["..matches[2].."] با موفقیت حذف شد", ok_cb, false)
+                reply_msg(msg['id'], "<i>پلاگین</i> ["..matches[2].."] <i>با موفقیت حذف شد</i>", ok_cb, false)
                 return io.popen("cd plugins && rm "..matches[2]..".lua")
             end 
 	   --Delplug.
@@ -948,7 +948,7 @@ function run(msg, matches, callback, extra)
   file:write(text)
   file:flush()
   file:close()
-  return "You can use it:\n!mynote\n\nYour note has been changed to:\n"..text.."\n\n"..team..'\n<a href="'..channel..'">Join us</a>'
+  return "<b>You can use it:\n!mynote\n\nYour note has been changed to:</b>\n"..text.."\n\n"..team..'\n<a href="'..channel..'">Join us</a>'
  end
  
    if matches[1] == "mynote" then
@@ -956,7 +956,7 @@ function run(msg, matches, callback, extra)
       mn = note:read("*all")
       return mn
     elseif matches[1] == "mynote" and not note then
-     return "You havent any note."
+     return "<b>You havent any note.</b>"
   end
        --Note.
        --hyper & bold & italic & code:
@@ -977,14 +977,14 @@ function run(msg, matches, callback, extra)
 	    if matches[1] == 'rmsg' and is_owner(msg) then
             if msg.to.type == 'channel' then
                 if tonumber(matches[2]) > 10000 or tonumber(matches[2]) < 1 then
-                    return "More than 1 and less than 10,000"
+                    return "<b>More than 1 and less than 10,000</b>"
                 end
                 get_history(msg.to.peer_id, matches[2] + 1 , history , {chatid = msg.to.peer_id, con = matches[2]})
             else
-                return "Only for supergroup!"
+                return "<b>Only for supergroup!</b>"
             end
         elseif matches[1] == 'rmsg' and not is_owner(msg) then
-            return "For moderators only!"
+            return "<b>For moderators only!</b>"
         end
 	   --Rmsg.
        --onservice:
@@ -1011,7 +1011,7 @@ function run(msg, matches, callback, extra)
    file2:write(link)
    file2:flush()
    file2:close()
-   return "Your team name is: "..text.."\nChannel: "..link
+   return "<b>Your team name is:</b> "..text.."\n<b>Channel:</b> "..link
        end
        --Setteam.
 	   --Filter:
@@ -1025,10 +1025,10 @@ function run(msg, matches, callback, extra)
             Group_rate = _config.Group_rate
     	    Supergroup_rate = _config.Supergroup_rate
 		    if Group_rate ~= "" or Supergroup_rate ~= "" then
-    	        rate = "Rate of:\n\nChat: "..Group_rate.."\nSuperGroup: "..Supergroup_rate
+    	        rate = "<b>Rate of:</b>\n\n<b>Chat:</b> "..Group_rate.."\n<b>SuperGroup:</b> "..Supergroup_rate
     	        send_msg(get_receiver(msg), rate, ok_cb, false)
 		    else
-		        rate = "Erore: Rate is not set!"
+		        rate = "<b>Erore: Rate is not set!</b>"
     	        send_msg(get_receiver(msg), rate, ok_cb, false)
             end
 	    end
@@ -1036,7 +1036,7 @@ function run(msg, matches, callback, extra)
 	   --Start:
 	    if msg.text:match("/[Ss][Tt][Aa][Rr][Tt]") then
 		    if msg.to.type == "user" then
-			    return "Hello dear ["..msg.from.print_name.."], welcome to "..msg.to.print_name.."\nThanks for /start me :)\n"
+			    return "<b>Hello dear</b> ["..msg.from.print_name.."], <b>bwelcome to</b> "..msg.to.print_name.."\n<b>Thanks for /start me :)</b>\n"
 	        end
         end
 	   --Start.
@@ -1045,7 +1045,6 @@ function run(msg, matches, callback, extra)
     	    about_text = [[*IN THE NAME OF ALLAH*
 This is an original bot and based on (AdvanSource).
 Copyright all right reserved and you must respect all laws.
-
 Source: https://github.com/janlou/AdvanSource
 Channel: @AdvanTeam
 Messenger: @Advanbot
@@ -1190,10 +1189,10 @@ Version: [4.1]
 	    if matches[1] == "setbye" and matches[2] then
 		    text = matches[2]
 	        if not is_owner(msg) then
-			    return "فقط مخصوص مدیر گروه"
+			    return "<i>فقط مخصوص مدیر گروه</i>"
             end
 		    redis:set("bye:"..msg.to.id, text)
-            return "متن خروج کاربر تغییر کرد به:\n"..text
+            return "<i>متن خروج کاربر تغییر کرد به:</i>\n>"..text
         end
 		if matches[1] == "chat_del_user" or matches[1] == "channel_kick" or matches[1] == "kick_user" then
 		    send = redis:get("bye:"..msg.to.id)
@@ -1205,31 +1204,31 @@ Version: [4.1]
         end
 		if matches[1] == "delbye" then
 		    if not is_owner(msg) then
-			    return "فقط مخصوص مدیر گروه"
+			    return "<i>فقط مخصوص مدیر گروه</i>"
 			end
-			say = "متن خروج با موفقیت حذف شد"
+			say = "<i>متن خروج با موفقیت حذف شد</i>"
 			if redis:get("bye:"..msg.to.id) then
                 redis:del("bye:"..msg.to.id)
                 send_msg(get_receiver(msg), say, ok_cb, false)
             else
-                return "متن خروج کاربر تنظیم نشده است"
+                return "<i>متن خروج کاربر تنظیم نشده است</i>"
             end
         end
 	   --Setbye.
 	   --Setwlc:
 	    if matches[1] == 'setwlc' and matches[2] then
 	        if not is_owner(msg) then
-			    return "فقط مخصوص مدیر گروه"
+			    return "<i>فقط مخصوص مدیر گروه</i>"
 			end
 			redis:set('wlc:'..msg.to.id, matches[2])
-            return 'متن خوش آمد گویی گروه تنظیم شد به : \n'..matches[2]
+            return '<i>متن خوش آمد گویی گروه تنظیم شد به :</i> \n>'..matches[2]
 	    end
 		if matches[1] == 'delwlc' then
 		    if not is_owner(msg) then
-			    return "فقط مخصوص مدیر گروه"
+			    return "<i>فقط مخصوص مدیر گروه</i>"
 			end	
 			redis:del('wlc:'..msg.to.id)
-            return 'متن خوش آمد گویی با موفقیت حذف شد'
+            return '<i>متن خوش آمد گویی با موفقیت حذف شد</i>'
 		end
 		if matches[1] == 'chat_add_user' or matches[1] == 'chat_add_user_link' or matches[1] == 'channel_invite' then
 		    send = redis:get("wlc:"..msg.to.id)
@@ -1254,32 +1253,51 @@ return {
  "^[!/#]([Nn]ote) (.*)$",
  "^[!/#]([Mm]ynote)$",
  "^[!/#](tosticker)$",
+ "^(tosticker)$",
  "^[!/#](tophoto)$",
+ "^(tophoto)$",
  "^[!/#](leave)$",
+ "^(leave)$",
  "^[!/#]([Aa]ddsudo)$",
+ "^([Aa]ddsudo)$",
  "^[!/#]([Ff]ilter) (.*)$",
+ "^([Ff]ilter) (.*)$",
  "^[!/#]([Uu]nfilter) (.*)$",
+ "^([Uu]nfilter) (.*)$",
  "^[!/#]([Ff]ilterlist)$",
+ "^([Ff]ilterlist)$",
  "^[!/#](addplug) (.*) ([^%s]+)$",
  "^[!/#](delplug) (.*)$",
  "^[!/#]([Ss]etsudo) (%d+)$",
  "^[!/#]([Rr]msg) (%d*)$",
+ "^([Rr]msg) (%d*)$",
  "^[!/#](setteam) (.*) (.*)$",
  "^[!/#]([Vv]ersion)$",
  "^[!/#]([Cc]onfig) (%d+)$",
  "^[!/#]([Cc]lean) (.*)$",
+ "^([Cc]lean) (.*)$",
  "^[!/#]([Bb]old) (.*)$",
+ "^([Bb]old) (.*)$",
  "^[!/#]([Ii]talic) (.*)$",
+ "^([Ii]talic) (.*)$",
  "^[!/#]([Cc]ode) (.*)$",
+ "^([Cc]ode) (.*)$",
  "^[!/#]([Hh]yper) (.*) (.*)$",
+ "^([Hh]yper) (.*) (.*)$",
  "^[!/#](setwlc) +(.*)$",
+ "^(setwlc) +(.*)$",
  "^[!/#](delwlc)$",
+ "^(delwlc)$",
  "^[!/#]([Ss]etbye) (.*)$",
+ "^([Ss]etbye) (.*)$",
  "^[!/#]([Dd]elbye)$",
+ "^([Dd]elbye)$",
  "^[!/#][Rr][Aa][Tt][Ee]$",
  "^[!/#][Aa][Dd][Vv][Aa][Nn]$",
  "^[!/#](lock) (.*)$",
+ "^(lock) (.*)$",
  "^[!/#](unlock) (.*)$",
+ "^(unlock) (.*)$",
  "/[Ss][Tt][Aa][Rr][Tt]",
  "^!!tgservice (chat_del_user)$",
  "^!!tgservice (channel_kick)$",
