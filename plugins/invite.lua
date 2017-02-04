@@ -38,6 +38,7 @@ end
 return {
     patterns = {
       "^[#!/]invite (.*)$"
+      "^invite (.*)$"
     },
     run = run
 }
