@@ -221,7 +221,6 @@ function create_config( )
     "Groups",
     "help",
     "info",
-    "ingroup",
     "invite",
     "security",
     "plugins",
