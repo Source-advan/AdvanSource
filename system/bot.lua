@@ -233,14 +233,12 @@ function create_config( )
     "Sticker",
     "Time",
     "expire",
-    "joke",
     "lock-fwd",
     "mute-all",
-    "voice",
     "warn",
-    "write",
     "language",
     "whitelist",
+    "me",
     "tools"
     },
     vip_users = {}, --vip users
