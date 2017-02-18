@@ -215,17 +215,11 @@ function create_config( )
   -- A simple config with basic plugins and ourselves as privileged user
   config = {
     enabled_plugins = {
-    "all",
-    "anti_spam",
     "banhammer",
-    "Groups",
     "help",
     "info",
-    "invite",
-    "security",
     "plugins",
     "sudo",
-    "supergroup",
     "ActiveUser",
     "Payamresan",
     "Ping",
@@ -233,11 +227,6 @@ function create_config( )
     "Sticker",
     "Time",
     "expire",
-    "lock-fwd",
-    "mute-all",
-    "warn",
-    "language",
-    "whitelist",
     "me",
     "tools"
     },
