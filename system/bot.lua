@@ -215,20 +215,38 @@ function create_config( )
   -- A simple config with basic plugins and ourselves as privileged user
   config = {
     enabled_plugins = {
+    "all",
+    "anti_spam",
     "banhammer",
+    "Groups",
     "help",
     "info",
+    "invite",
+    "security",
     "plugins",
     "sudo",
+    "supergroup",
     "ActiveUser",
     "Payamresan",
     "Ping",
-    "Salam",
     "Sticker",
-    "Time",
     "expire",
+    "lock-fwd",
+    "mute-all",
+    "warn",
+    "language",
+    "whitelist",
     "me",
-    "tools"
+    "tools",
+    "echo-en",
+    "joke",
+    "echo-fa",
+    "love",
+    "feedback",
+    "link-pv",
+    "fun",
+    "rps",
+    "nerkh"
     },
     vip_users = {}, --vip users
     sudo_users = {305755551,tonumber(our_id)},--Sudo users
