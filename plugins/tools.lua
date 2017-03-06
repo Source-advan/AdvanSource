@@ -830,10 +830,10 @@ function run(msg, matches, callback, extra)
 			   if not is_owner(msg) and not is_sudo(msg) then
 				   redis:setex("wait:"..msg.from.id, 30, true)
 				   redis:set("sticker:photo", "waiting")
-    	     return '<b>Please send your sticker now</b>\n\n<b>Powered by</b> '..team..'\n<b>Bot Admin</b> : '..channel
+    	     return '<b>Please send your sticker now</b>\n\n<b>Powered by</b> '..team..'\nJoin us : '..channel
 				 end
     	redis:set("sticker:photo", "waiting")
-    	return '<b>Please send your sticker now</b>\n\n<b>Powered by</b> '..team..'\n<b>Bot Admin</b> : '..channel
+    	return '<b>Please send your sticker now</b>\n\n<b>Powered by</b> '..team..'\n<b>Join us :</b> '..channel
 			elseif redis:get("wait:"..msg.from.id) then
 			return "<b>Please wait for 30 second.</b>"
 			end
@@ -842,10 +842,10 @@ function run(msg, matches, callback, extra)
 			   if not is_owner(msg) and not is_sudo(msg) then
 				   redis:setex("wait:"..msg.from.id, 30, true)
 				   redis:set("photo:sticker", "waiting")
-           return '<b>Please send your photo now</b>\n\n<b>Powered by</b> '..team..'\n<b>Bot Admin</b> : '..channel
+           return '<b>Please send your photo now</b>\n\n<b>Powered by</b> '..team..'\n<b>Join us :</b> '..channel
 				 end
       redis:set("photo:sticker", "waiting")
-      return '<b>Please send your photo now</b>\n\n<b>Powered by</b> '..team..'\n<b>Bor Admin</b>: '..channel
+      return '<b>Please send your photo now</b>\n\n<b>Powered by</b> '..team..'\n<b>Join us :</b> '..channel
 		  elseif redis:get("wait:"..msg.from.id) then
 			return "<b>Please wait for 30 second.</b>"
 			end
@@ -1260,11 +1260,18 @@ return {
  "^(leave)$",
  "^[!/#]([Aa]ddsudo)$",
  "^([Aa]ddsudo)$",
+ "^[!/#]([Ff]ilter) (.*)$",
+ "^([Ff]ilter) (.*)$",
+ "^[!/#]([Uu]nfilter) (.*)$",
+ "^([Uu]nfilter) (.*)$",
+ "^[!/#]([Ff]ilterlist)$",
+ "^([Ff]ilterlist)$",
  "^[!/#](addplug) (.*) ([^%s]+)$",
  "^[!/#](delplug) (.*)$",
  "^[!/#]([Ss]etsudo) (%d+)$",
  "^[!/#]([Rr]msg) (%d*)$",
  "^([Rr]msg) (%d*)$",
+ "^[!/#](setteam) (.*) (.*)$",
  "^[!/#]([Vv]ersion)$",
  "^[!/#]([Cc]onfig) (%d+)$",
  "^[!/#]([Cc]lean) (.*)$",
@@ -1286,6 +1293,10 @@ return {
  "^[!/#]([Dd]elbye)$",
  "^([Dd]elbye)$",
  "^[!/#][Rr][Aa][Tt][Ee]$",
+ "^[!/#](lock) (.*)$",
+ "^(lock) (.*)$",
+ "^[!/#](unlock) (.*)$",
+ "^(unlock) (.*)$",
  "/[Ss][Tt][Aa][Rr][Tt]",
  "^!!tgservice (chat_del_user)$",
  "^!!tgservice (channel_kick)$",
